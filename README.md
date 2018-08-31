@@ -1,2 +1,2 @@
 # BitMEX-Helper
-Web Application for calculating risk and position size and journaling Bitcoin trades on BitMEX.
+Web Application for calculating risk and position size based on capital, stop loss, and desired risk. Charting implemented with Coin API.
