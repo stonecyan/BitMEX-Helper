@@ -3,25 +3,48 @@
     ViewBag.Title = "Index";
 }
 
-<div class="row no-gutters">
-    <div class="card col-sm-12 col-md-10 col-lg-5 mx-auto">
-        <div class="card-header">
-            <h4 class="text-center">BitMEX Position Size Calculator</h4>
+<div class="card text-center">
+    <h4 class="card-title">BitMEX Position Size Calculator</h4>
+</div>
+<div class="card">
+    <div class="card-body text-center">
+
+        <div>
+            <p class="font-weight-bold">Capital: <input class="ml-3" data-bind="value: capital" /></p>
+            <p class="font-weight-bold">Entry: <input class="ml-3" data-bind="value: entry" /></p>
+            <p class="font-weight-bold">Stop Loss: <input class="ml-3" data-bind="value: stopLoss" /></p>
+            <p class="font-weight-bold">Risk %: <input class="ml-3" data-bind="value: risk" /></p>
+            <p class="font-weight-bold">Position Size: <span class="font-weight-normal" data-bind="text: usdposition" /></p>
         </div>
     </div>
 </div>
 
-<div class="card-body text-center">
-    <div>
-        <p class="font-weight-bold">Capital: <input class="ml-3" data-bind="value: capital" /></p>
-        <p class="font-weight-bold">Entry: <input class="ml-3" data-bind="value: entry" /></p>
-        <p class="font-weight-bold">Stop Loss: <input class="ml-3" data-bind="value: stopLoss" /></p>
-        <p class="font-weight-bold">Risk %: <input class="ml-3" data-bind="value: risk" /></p>
-        <p class="font-weight-bold">Position Size: <span class="font-weight-normal" data-bind="text: usdposition" /></p>
-    </div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div id="tradingview_c5df6"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BITMEX-XBT/" rel="noopener" target="_blank"><span class="blue-text">XBT chart</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+        new TradingView.widget(
+            {
+                "width": 980,
+                "height": 610,
+                "symbol": "BITMEX:XBT",
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "Light",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "hide_side_toolbar": false,
+                "allow_symbol_change": true,
+                "container_id": "tradingview_c5df6"
+            }
+        );
+    </script>
 </div>
-
-
+<!-- TradingView Widget END -->
 @*<div>
         <p>Capital: <span data-bind="text: capital" /></p>
         <p>Entry: <span data-bind="text: entry" /></p>
@@ -32,20 +55,20 @@
 <div>
 </div>
 <script type="text/javascript">
-        function vm() {
-            this.capital = ko.observable(1);
-            this.entry = ko.observable(10000);
-            this.stopLoss = ko.observable(9000);
-            this.risk = ko.observable(5);
-             this.usdposition = ko.computed(function () {
-                this.capital(Number(this.capital()));
-                this.entry(Number(this.entry()));
-                this.stopLoss(Number(this.stopLoss()));
-                this.risk(Number(this.risk()));
-                 var positionsize = (this.capital() * this.risk() / 100) / (1 - (this.stopLoss() / this.entry())) * this.entry();
+    function vm() {
+        this.capital = ko.observable(1);
+        this.entry = ko.observable(10000);
+        this.stopLoss = ko.observable(9000);
+        this.risk = ko.observable(5);
+        this.usdposition = ko.computed(function () {
+            this.capital(Number(this.capital()));
+            this.entry(Number(this.entry()));
+            this.stopLoss(Number(this.stopLoss()));
+            this.risk(Number(this.risk()));
+            var positionsize = (this.capital() * this.risk() / 100) / (1 - (this.stopLoss() / this.entry())) * this.entry();
 
-                return positionsize.toFixed(0);
-            }, this);
-        }
-         ko.applyBindings(new vm());
+            return positionsize.toFixed(0);
+        }, this);
+    }
+    ko.applyBindings(new vm());
 </script>
