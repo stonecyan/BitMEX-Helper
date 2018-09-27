@@ -2,21 +2,26 @@
 @{
     ViewBag.Title = "Index";
 }
+<div id="positionsize">
+    <div class="card text-center">
+        <h4 class="card-title">Position Size</h4>
+    </div>
+    <div class="card">
+        <div class="card-body text-center">
 
-<div class="card text-center">
-    <h4 class="card-title">BitMEX Position Size Calculator</h4>
-</div>
-<div class="card">
-    <div class="card-body text-center">
-
-        <div>
-            <p class="font-weight-bold">Capital: <input class="ml-3" data-bind="value: capital" /></p>
-            <p class="font-weight-bold">Entry: <input class="ml-3" data-bind="value: entry" /></p>
-            <p class="font-weight-bold">Stop Loss: <input class="ml-3" data-bind="value: stopLoss" /></p>
-            <p class="font-weight-bold">Risk %: <input class="ml-3" data-bind="value: risk" /></p>
-            <p class="font-weight-bold">Position Size: <span class="font-weight-normal" data-bind="text: usdposition" /></p>
+            <div>
+                <p class="font-weight-bold">Capital: <input class="ml-3" data-bind="value: capital" /></p>
+                <p class="font-weight-bold">Entry: <input class="ml-3" data-bind="value: entry" /></p>
+                <p class="font-weight-bold">Stop Loss: <input class="ml-3" data-bind="value: stopLoss" /></p>
+                <p class="font-weight-bold">Risk %: <input class="ml-3" data-bind="value: risk" /></p>
+                <p class="font-weight-bold">Position Size: <span class="font-weight-normal" data-bind="text: usdposition" /></p>
+            </div>
         </div>
     </div>
+</div>
+
+<div id="average entry">
+
 </div>
 
 <!-- TradingView Widget BEGIN -->
@@ -45,15 +50,8 @@
     </script>
 </div>
 <!-- TradingView Widget END -->
-@*<div>
-        <p>Capital: <span data-bind="text: capital" /></p>
-        <p>Entry: <span data-bind="text: entry" /></p>
-        <p>Stop Loss: <span data-bind="text: stopLoss" /></p>
-        <p>Risk %: <span data-bind="text: risk" /></p>
-    </div>*@
 
-<div>
-</div>
+
 <script type="text/javascript">
     function vm() {
         this.capital = ko.observable(1);

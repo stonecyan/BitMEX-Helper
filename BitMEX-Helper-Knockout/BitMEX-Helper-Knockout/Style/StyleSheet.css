@@ -1,3 +1,9 @@
 ﻿body {
 
 }
+
+#positionsize{
+    border-style:solid;
+    width: 300px;
+    margin-bottom: 50px;
+}
